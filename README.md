@@ -89,7 +89,7 @@ If you drop the web too close to a screen edge, it slides back in just far enoug
 ### Web-swinging
 
 **Double-click him** and he swings from one side of the screen to the other. **Web-swing to** in his menu sends him **Left**, to the **Center**, **Right**, **Somewhere else**,
-to **Where the pointer is** (also ⌃⌥⇧W anywhere) or **Across the screen** to the other side. He goes
+to **Where the pointer is** (also ⌃⇧W anywhere) or **Across the screen** to the other side. He goes
 web to web, like Spider-Man between buildings. He leans back, swings forward, lets
 go on the way up and flies through the air; on the way down the next web shoots from his hand and
 catches him, and he swings straight on without losing speed. The trip is split into equal
@@ -148,7 +148,7 @@ while the computer slept is shown as soon as it wakes. They are listed in the **
 
 ### Focus timer
 
-**Focus timer > Start** (or ⌃⌥⇧F) starts a 25 minute focus, then a 5 minute break; every 4th break is
+**Focus timer > Start** (or ⌃⇧F) starts a 25 minute focus, then a 5 minute break; every 4th break is
 a 15 minute one; then focus again until you **Stop** it. All three lengths are in the menu. The time
 left shows next to the menu bar icon on macOS (in the tray tooltip elsewhere), updated once a minute
 and every second in the last minute. When a focus ends he swings big and tells you to take a break;
@@ -182,10 +182,10 @@ hard, made on the spot (no sound files). The sound engine sleeps between sounds.
 - **Hide him:** for 15 minutes, 1 hour, or until you bring him back. He climbs out of sight, and
   reminders show as system notifications meanwhile. **Show him** at the top of the menu ends it early.
 - **Hide over full-screen apps** (macOS, on by default): he is not shown over an app in full screen.
-  Windows gives no way to tell that another app is full screen, so use ⌃⌥⇧H (Ctrl+Alt+Shift+H) there.
-- **Keyboard shortcuts** (on by default), anywhere: Control+Option+Shift on macOS, Ctrl+Alt+Shift
-  elsewhere, with **H** hide or show him, **S** swing, **W** web-swing to the pointer, **F** start or stop
-  a focus. A shortcut another app already has is skipped and noted in the log.
+  Windows gives no way to tell that another app is full screen, so use Ctrl+Shift+H there.
+- **Keyboard shortcuts** (on by default), anywhere: Control+Shift (⌃⇧ on macOS, Ctrl+Shift
+  elsewhere) with **H** hide or show him, **B** bring him back (from hiding or after Take him down),
+  **S** swing, **W** web-swing to the pointer, **F** start or stop a focus. A shortcut another app already has is skipped and noted in the log.
 
 ### Starting automatically
 

@@ -54,7 +54,7 @@ const DEFAULTS = {
   Antics: true,
   /** A "thwip" when a web shoots, a whoosh on a hard fling. */
   Sounds: false,
-  /** Control+Option+Shift (Ctrl+Alt+Shift) with H, S, W, F, anywhere. */
+  /** Control+Shift (Ctrl+Shift) with H, B, S, W, F, anywhere. */
   Hotkeys: true,
   /** macOS: not shown over apps in full screen. */
   HideInFullScreen: true,

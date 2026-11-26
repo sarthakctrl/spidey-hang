@@ -796,7 +796,7 @@ function showAgain() {
   refreshTrayIfLinux();
 }
 
-/** ⌃⌥⇧H: hides him, or brings him back from hiding or from being taken down. */
+/** ⌃⇧H: hides him, or brings him back from hiding or from being taken down. */
 function toggleHidden() {
   if (settings.Down) {
     bringBack();
@@ -1322,9 +1322,10 @@ function doAntic(kind, forced) {
 
 // ---- Keyboard shortcuts ------------------------------------------------------------------
 
-/** Control+Option+Shift (Ctrl+Alt+Shift) and a letter, anywhere. One another app has is skipped. */
+/** Control+Shift (Ctrl+Shift) and a letter, anywhere. One another app has is skipped. */
 const HOTKEYS = {
   H: () => toggleHidden(),
+  B: () => bringBack(),
   S: () => swing(),
   W: () => webSwing('pointer'),
   F: () => (focus.running ? stopFocus() : startFocus()),
@@ -1336,7 +1337,7 @@ function applyHotkeys() {
     return;
   }
   for (const [key, fn] of Object.entries(HOTKEYS)) {
-    const accelerator = `Control+Alt+Shift+${key}`;
+    const accelerator = `Control+Shift+${key}`;
     let ok = false;
     try {
       ok = globalShortcut.register(accelerator, fn);
@@ -1732,8 +1733,8 @@ function focusMenu() {
     submenu: [
       ...(focus.running ? [{ label: focus.describe(now), enabled: false }] : []),
       focus.running
-        ? { label: 'Stop', accelerator: 'Control+Alt+Shift+F', registerAccelerator: false, click: stopFocus }
-        : { label: `Start a ${settings.FocusMinutes} minute focus`, accelerator: 'Control+Alt+Shift+F', registerAccelerator: false, click: () => startFocus() },
+        ? { label: 'Stop', accelerator: 'Control+Shift+F', registerAccelerator: false, click: stopFocus }
+        : { label: `Start a ${settings.FocusMinutes} minute focus`, accelerator: 'Control+Shift+F', registerAccelerator: false, click: () => startFocus() },
       ...(focus.running ? [{ label: focus.phase === 'focus' ? 'Skip to the break' : 'Skip to the next focus', click: skipFocus }] : []),
       { type: 'separator' },
       { label: 'Focus length', submenu: lengths('FocusMinutes', add('FocusMinutes', [15, 25, 30, 45, 50, 60])) },
@@ -1783,7 +1784,7 @@ function buildMenu() {
     click: toggleStartAutomatically,
   };
   const hotkeyItem = {
-    label: `Keyboard shortcuts (${isMac ? '⌃⌥⇧' : 'Ctrl+Alt+Shift+'} H hide, S swing, W web-swing, F focus)`,
+    label: `Keyboard shortcuts (${isMac ? '⌃⇧' : 'Ctrl+Shift+'} H hide, B bring back, S swing, W web-swing, F focus)`,
     type: 'checkbox',
     checked: settings.Hotkeys,
     click: () => toggleSetting('Hotkeys', applyHotkeys),
@@ -1796,7 +1797,7 @@ function buildMenu() {
   if (settings.Down || hidden) {
     const until = hidden && hidden.until ? ` (back at ${new Date(hidden.until).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })})` : '';
     return Menu.buildFromTemplate([
-      { label: hidden ? `Show him${until}` : 'Bring him back', accelerator: 'Control+Alt+Shift+H', registerAccelerator: false, click: hidden ? showAgain : bringBack },
+      { label: hidden ? `Show him${until}` : 'Bring him back', accelerator: 'Control+Shift+B', registerAccelerator: false, click: hidden ? showAgain : bringBack },
       { type: 'separator' },
       focusMenu(),
       remindersMenu,
@@ -1825,7 +1826,7 @@ function buildMenu() {
   };
 
   const template = [
-    { label: 'Give him a swing', accelerator: 'Control+Alt+Shift+S', registerAccelerator: false, click: () => swing() },
+    { label: 'Give him a swing', accelerator: 'Control+Shift+S', registerAccelerator: false, click: () => swing() },
     {
       label: 'Web-swing to',
       submenu: [
@@ -1833,7 +1834,7 @@ function buildMenu() {
         { label: 'Center', click: () => webSwing('center') },
         { label: 'Right', click: () => webSwing('right') },
         { label: 'Somewhere else', click: () => webSwing('random') },
-        { label: 'Where the pointer is', accelerator: 'Control+Alt+Shift+W', registerAccelerator: false, click: () => webSwing('pointer') },
+        { label: 'Where the pointer is', accelerator: 'Control+Shift+W', registerAccelerator: false, click: () => webSwing('pointer') },
         { type: 'separator' },
         { label: 'Across the screen', click: () => post(hangWin, 'travel') },
       ],
@@ -1874,7 +1875,7 @@ function buildMenu() {
       submenu: [
         { label: 'For 15 minutes', click: () => hide(15) },
         { label: 'For 1 hour', click: () => hide(60) },
-        { label: 'Until you bring him back', accelerator: 'Control+Alt+Shift+H', registerAccelerator: false, click: () => hide(0) },
+        { label: 'Until you bring him back', accelerator: 'Control+Shift+H', registerAccelerator: false, click: () => hide(0) },
       ],
     },
     { label: 'Take him down', click: takeDown },
